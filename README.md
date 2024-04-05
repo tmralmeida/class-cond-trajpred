@@ -62,9 +62,8 @@ Set the corresponding cfg file on  the [config folder](https://github.com/tmralm
 to the original data as follows:
 ------------
 
-data :
-  data_dir : data/original/thor_magni/  # data/original/sdd/ for SDD dataset
-
+    data :
+      data_dir : data/original/thor_magni/  # data/original/sdd/ for SDD dataset
 ------------
 
 Run the train_model module with the corresponding config file:
@@ -78,10 +77,10 @@ Set the corresponding cfg file on  the [config folder](https://github.com/tmralm
 to the processed data as follows:
 ------------
 
-data :
-  data_dir : data/processed/sdd/k_fold_10  # data/original/thor_magni/ for THOR-MAGNI dataset
-  
+    data :
+      data_dir : data/processed/sdd/k_fold_10  # data/original/thor_magni/ for THOR-MAGNI dataset
 ------------
+
 
 ```
 python -m src.data_modeling.k_fold_cv 10 src/cfg/models/deep_learning_based/thor_magni/forecasting/rnn.yaml

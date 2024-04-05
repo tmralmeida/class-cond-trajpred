@@ -58,10 +58,7 @@ Steps to train and test deep learning-based predictors (i.e., RED, cRED, TF, cTF
 
 ### Train one model on a dataset
 
-Set the corresponding cfg file on  the [config folder](https://github.com/tmralmeida/class-cond-trajpred/tree/main/class_cond_trajpred/cfg) 
-to the original data as follows:
-------------
-
+Set the corresponding cfg file on  the [config folder](https://github.com/tmralmeida/class-cond-trajpred/tree/main/class_cond_trajpred/cfg) to the original data as follows:
     data :
       data_dir : data/original/thor_magni/  # data/original/sdd/ for SDD dataset
 ------------
@@ -73,10 +70,7 @@ python -m class_cond_trajpred.data_modeling.train_model class_cond_trajpred/cfg/
 
 ### k-fold cross validation
 
-Set the corresponding cfg file on  the [config folder](https://github.com/tmralmeida/class-cond-trajpred/tree/main/class_cond_trajpred/cfg) 
-to the processed data as follows:
-------------
-
+Set the corresponding cfg file on  the [config folder](https://github.com/tmralmeida/class-cond-trajpred/tree/main/class_cond_trajpred/cfg) to the processed data as follows:
     data :
       data_dir : data/processed/sdd/k_fold_10  # data/original/thor_magni/ for THOR-MAGNI dataset
 ------------

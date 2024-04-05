@@ -39,22 +39,18 @@ Project Organization
 
 
 
-## Installation
+## Install
 
-
-Conda environemnt:
-```
+Install [miniconda](http://docs.conda.io/en/latest/miniconda.html). Then, you can install all packages required by running:
 
 ```
+conda env create -f environment.yml && conda activate thor-magni-tools
+```
 
-
-
+And run:
 ```
 pip install .
 ```
-
-
-
 
 ## Training and testing deep learning predictors
 

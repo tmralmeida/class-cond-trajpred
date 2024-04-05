@@ -1,7 +1,7 @@
-class-cond-trajepred
+class-cond-trajpred
 ==============================
 
-Pytorch (v2.0.1) implementation of "Trajectory Prediction for Heterogeneous Agents: A Performance Analysis on Small and Imbalanced Datasets".
+Implementation of "Trajectory Prediction for Heterogeneous Agents: A Performance Analysis on Small and Imbalanced Datasets".
 
 Project Organization
 ------------

@@ -1,0 +1,8 @@
+inherit_from : class_cond_trajpred/cfg/heuristic_based/default.yaml
+
+data :
+  dataset : thor_magni
+  data_dir : data/original/thor_magni/ # data/processed/thor_magni/k_fold_10
+  dataset_target : Scenario_2 # specific testing dataset  
+  obs_len : 8 # number of observable time steps
+  pred_len : 12 # number of predicted time steps

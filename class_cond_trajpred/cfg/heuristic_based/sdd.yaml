@@ -1,0 +1,7 @@
+inherit_from : class_cond_trajpred/cfg/heuristic_based/default.yaml
+
+data :
+  dataset : sdd
+  data_dir : data/original/sdd/ # data/processed/sdd/k_fold_10
+  obs_len : 8 # number of observable time steps
+  pred_len : 12 # number of predicted time steps

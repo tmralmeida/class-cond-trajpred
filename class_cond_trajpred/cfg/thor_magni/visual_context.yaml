@@ -1,0 +1,8 @@
+data_dir : data/visuals/thor
+window_size : 3.5
+
+cnn_feature_extractor:
+  conv_block : 
+    kernel_size: 3
+  linear_block:
+    out_size : 32

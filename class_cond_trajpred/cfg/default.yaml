@@ -1,0 +1,24 @@
+data :
+  inputs : [trajectories, speeds] # [options] trajectories / speeds / displacements / polars / straightness_index
+  output : speeds # [options] trajectories / speeds / displacements / polars 
+  test : True # testing 
+
+
+visual_feature_extractor :
+  use : False
+
+
+hyperparameters : 
+  max_epochs : 100
+  bs : 32 # batch size
+  patience : 20 # wait until no improvement
+  val_freq : 2 # validation frequency
+
+
+save : 
+  best_metric : ade # [options] ade / fde
+  checkpoints : 100 # save every object each n epochs, if -1 does not save 
+  path :  logs # full_path saving
+
+
+

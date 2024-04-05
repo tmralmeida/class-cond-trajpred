@@ -1,0 +1,37 @@
+inherit_from : class_cond_trajpred/cfg/default.yaml
+
+
+model : sup_ctf
+
+
+data :
+  dataset : sdd
+  data_dir : data/original/sdd/ # data/processed/sdd/k_fold_10
+  dataset_target : null # specific testing dataset  
+  observation_len : 8 # number of observable time steps
+  prediction_len : 12 # number of predicted time steps
+
+
+network :
+  condition: 
+    name: embedding # [options] embedding / one_hot
+    n_labels: 3  # number of supervised labels -> pedestrian, biker, kart, skater, bus, car
+    embedding_dim: 16  # if embedding condition
+  d_model : 32
+  num_heads : 8
+  num_layers : 6
+  dropout : 0.2
+  observation_len : 8
+  prediction_len : 12
+
+
+visual_feature_extractor :
+  use : False
+  inherit_from : src/cfg/models/deep_learning_based/thor_magni/visual_context.yaml 
+
+ 
+hyperparameters : 
+  lr : 1e-3 # learning rate for the optim more stable training
+  scheduler_patience : 5  # epochs
+  loss_type : mse # [options] mse / soft_dtw
+  bs : 128

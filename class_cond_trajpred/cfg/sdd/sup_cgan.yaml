@@ -1,0 +1,107 @@
+inherit_from : class_cond_trajpred/cfg/default.yaml
+
+
+model : sup_cgan
+
+
+data :
+  dataset : sdd
+  data_dir : data/original/sdd/ # data/processed/sdd/k_fold_10
+  dataset_target : null # specific testing dataset  
+  observation_len : 8 # number of observable time steps
+  prediction_len : 12 # number of predicted time steps
+
+
+network :
+  generator :
+    observation_len : 8
+    prediction_len : 12
+    condition:
+      name: embedding # [options] embedding / one_hot
+      n_labels: 3  # number of supervised labels -> pedestrian, biker, kart, skater, bus, car
+      embedding_dim: 16  # if embedding condition
+    encoder :
+      encoder_type : tf # [options] rnn / tf
+      rnn : # if lstm or gru
+        type: lstm # [options] gru / lstm
+        state : hidden # [options] hidden / cell
+        embedding_dim : 16 
+        hidden_dim : 128
+      tf : 
+        d_model : 32
+        num_heads : 1
+        num_layers : 1
+        dropout : 0.2
+    mlp_decoder_context :
+      noise_type : gaussian # gaussian or uniform
+      noise_dim : 8
+      activation : prelu 
+      dropout : 0.2
+    decoder :
+      decoder_type : ff # [options] rnn / ff
+      rnn: # if lstm or gru
+        type: lstm # [optionas] lstm / gru
+        state : hidden # [options] hidden / cell
+        embedding_dim : 16 
+        hidden_dim : 128
+      ff: 
+        mlp_dims : [128, 64, 32]
+        activation : prelu
+        dropout : 0.2
+  discriminator :
+    observation_len : 8
+    prediction_len : 12
+    condition:
+      name: embedding # [options] embedding / one_hot
+      n_labels: 6  # number of supervised labels -> pedestrian, biker, kart, skater, bus, car
+      embedding_dim: 16  # if embedding condition
+    encoder : 
+      encoder_type : tf # [options] rnn / tf / ff
+      rnn : 
+        type : lstm  # [options] lstm / gru
+        state : hidden # [options] hidden / cell
+        observation_len : 8
+        prediction_len : 12
+        embedding_dim : 16 
+        hidden_dim : 64
+        dropout : 0.2 # dropout probability
+        activation : prelu
+      tf : 
+        d_model : 32
+        num_heads : 1
+        num_layers : 1
+        dropout : 0.2
+      ff : 
+        mlp_dims : [128, 64, 32]
+        activation : prelu
+        dropout : 0.2
+    classifier_head : 
+      mlp_dims : [128, 64, 32]
+      activation : prelu
+      dropout : 0.2
+
+
+visual_feature_extractor :
+  use : False
+  inherit_from : src/cfg/models/deep_learning_based/thor_magni/visual_context.yaml 
+  
+
+hyperparameters : 
+  g_lr : 1e-3 # learning rate of the generator optimizer
+  d_lr : 1e-3 # learning rate of the discriminator optimizer
+  scheduler_patience : 5  # epochs
+  g_clip_thresh : 1.0
+  d_clip_thresh : 0.0 
+  optim_freq_disc: 2 # optimize discriminator every step
+  optim_freq_gen: 1  # optimize generator every other step
+  generator_loss: 
+    tracklet_generation:
+      name: k_variety_mse  # [options] k_variety
+      weight: 2.0
+      k_train : 3 # number of sampled predictions during training
+    disc_loss:
+      name: adversarial  # [options] adversarial/feature_matching
+      weight: 1.0
+  n_samples_inference : 3 # number of sampled predictions during inference
+  t_cll : 100
+  bs : 128

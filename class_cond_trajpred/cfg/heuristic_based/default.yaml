@@ -1,0 +1,8 @@
+param :
+  meta :
+    v0_mode : constant # [options] gaussian / linear / constant
+    v0_sigma : 1.5 # # This is the sigma value to determine the v0 (i.e. velocity filtering) -> for gaussian v0_mode
+  uncertainty:
+    uncertainty: False
+    num_particles: 5
+    uncertainty sigma: 0.3

@@ -7,7 +7,7 @@ import torch
 from torch.utils.data import Dataset
 
 from class_cond_trajpred.io import load_json_file
-from .utils import PixWorldConverter, get_thor_mapping_roles, get_sdd_mapping_roles
+from .utils import PixWorldConverter, get_thor_mapping_roles, get_sdd_mapping_roles, TrajNorm
 
 
 def load_dataset(set_type: str, cfg: dict, **kwargs):
@@ -194,6 +194,7 @@ class SDDDataset(DeepLearningDataset):
         super().__init__(trajectories)
         trajs_concat = pd.concat(self.input_data)
         self.mapping_roles = get_sdd_mapping_roles(trajs_concat)
+        self.normalizer = TrajNorm()
 
     def get_mapping_cat_vars(self, cat_vars: List[str], mapping: dict):
         return self.convert_to_torch(
@@ -208,4 +209,10 @@ class SDDDataset(DeepLearningDataset):
                 "data_label": self.get_mapping_cat_vars(roles, self.mapping_roles),
             }
         )
+        obs_traj = new_inputs["trajectories"][:8, :][None, :]
+        pred_traj = new_inputs["trajectories"][8:, :][None, :]
+        self.normalizer.calculate_params(obs_traj)
+        obs_traj_norm = self.normalizer.normalize(obs_traj).squeeze()
+        pred_traj_norm = self.normalizer.normalize(pred_traj).squeeze()
+        new_inputs["trajectories"] = torch.cat([obs_traj_norm, pred_traj_norm])
         return new_inputs

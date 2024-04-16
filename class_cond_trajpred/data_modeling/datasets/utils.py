@@ -89,3 +89,34 @@ def get_sdd_mapping_roles(trajs_concat: pd.DataFrame):
     mapping = defaultdict(lambda: len(roles))  # if unknown -> new class test set
     mapping.update({role: i for i, role in enumerate(roles)})
     return mapping
+
+
+class TrajNorm:
+    r"""Normalize trajectory with shape (num_peds, length_of_time, 2)
+
+    Args:
+        ori (bool): Whether to normalize the trajectory with the origin
+    """
+
+    def __init__(self):
+        self.traj_ori = None
+
+    def calculate_params(self, traj):
+        r"""Calculate the normalization parameters for observed data"""
+        self.traj_ori = traj[:, [-1]]
+
+    def get_params(self):
+        r"""Get the normalization parameters"""
+        return self.ori, self.traj_ori
+
+    def set_params(self, ori, traj_ori):
+        r"""Set the normalization parameters"""
+        self.ori, self.traj_ori = ori, traj_ori
+
+    def normalize(self, traj):
+        r"""Normalize the trajectory"""
+        return traj - self.traj_ori
+
+    def denormalize(self, traj):
+        r"""Denormalize the trajectory"""
+        return traj + self.traj_ori

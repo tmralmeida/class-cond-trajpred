@@ -111,9 +111,9 @@ class VariationalAutoEncoder(nn.Module):
                 noise_vector = noise_vector.repeat(batch_size, 1, 1)
             return noise_vector, None, None
 
-        hidden_state = (
-            hidden_state[0] if isinstance(hidden_state, tuple) else hidden_state
-        )
+        if isinstance(hidden_state, tuple):
+            hidden_state = hidden_state[0]
+
         new_hidden_state = (
             hidden_state.squeeze() if hidden_state.shape[0] != 1 else hidden_state
         )

@@ -18,10 +18,10 @@ network :
     n_labels: 3  # number of supervised labels -> pedestrian, biker, kart, skater, bus, car
     embedding_dim: 16  # if embedding condition
   d_model : 32
-  num_heads : 8
+  num_heads : 8 
   num_layers : 6
   dropout : 0.2
-  observation_len : 8
+  observation_len : 8 # change to 7 if speeds
   prediction_len : 12
 
 

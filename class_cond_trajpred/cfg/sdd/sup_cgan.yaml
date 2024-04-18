@@ -14,7 +14,7 @@ data :
 
 network :
   generator :
-    observation_len : 8
+    observation_len : 8 # change to 7 if speeds
     prediction_len : 12
     condition:
       name: embedding # [options] embedding / one_hot

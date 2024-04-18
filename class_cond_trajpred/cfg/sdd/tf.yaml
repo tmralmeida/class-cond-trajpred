@@ -17,7 +17,7 @@ network :
   num_heads : 8
   num_layers : 6
   dropout : 0.2
-  observation_len : 8
+  observation_len : 8 # change to 7 if speeds
   prediction_len : 12
   
 

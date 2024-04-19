@@ -18,7 +18,7 @@ from ..losses import SoftDTW
 
 
 class LightPointForecaster(pl.LightningModule):
-    """LSTM and GRU lightning modules"""
+    """LSTM, GRU, and Transformers lightning modules"""
 
     def __init__(self, **kwargs) -> None:
         super().__init__()

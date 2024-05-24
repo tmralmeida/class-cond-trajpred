@@ -81,7 +81,7 @@ Set the corresponding cfg file on  the [config folder](https://github.com/tmralm
 
 
 ```
-python -m src.data_modeling.k_fold_cv 10 src/cfg/models/deep_learning_based/thor_magni/forecasting/rnn.yaml
+python -m class_cond_trajpred.data_modeling.k_fold_cv 10 class_cond_trajpred/cfg/thor_magni/gan.yaml
 ```
 
 To train with `(x, y, v_x, v_y)`, we need to change the cfg file under `network`: set `observation_len` to 8.

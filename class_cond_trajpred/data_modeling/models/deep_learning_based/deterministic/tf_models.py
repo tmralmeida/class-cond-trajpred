@@ -34,7 +34,6 @@ class TransformerEncMLP(nn.Module):
         intermediate_size = self.d_model * cfg["observation_len"] // 2
         self.output_net = nn.Sequential(
             nn.Linear(self.d_model * cfg["observation_len"], intermediate_size),
-            nn.Dropout(cfg["dropout"]),
             nn.ReLU(inplace=True),
             nn.Linear(intermediate_size, 2 * cfg["prediction_len"]),
         )

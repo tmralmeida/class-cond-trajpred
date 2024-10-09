@@ -66,7 +66,6 @@ dependencies:
     - google-auth==2.19.1
     - google-auth-oauthlib==1.0.0
     - grpcio==1.51.3
-    - hdbscan==0.8.29
     - idna==3.4
     - ipykernel==6.23.0
     - ipython==8.13.2

@@ -44,7 +44,7 @@ Project Organization
 Install [miniconda](http://docs.conda.io/en/latest/miniconda.html). Then, you can install all packages required by running:
 
 ```
-conda env create -f environment.yml && conda activate thor-magni-tools
+conda env create -f requirements.yml && conda activate class-cond-trajpred
 ```
 
 And run:

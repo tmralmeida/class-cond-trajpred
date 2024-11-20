@@ -1,7 +1,14 @@
-class-cond-trajpred
-==============================
+<h2 align="center">Trajectory Prediction for Heterogeneous Agents:&thinsp;A&thinsp;Performance&thinsp;Analysis&thinsp;and&thinsp;on&thinsp;Small&hairsp;&#x0335;&hairsp;and&thinsp;Imbalanced&thinsp;Datasets</h2>
 
-Implementation of "Trajectory Prediction for Heterogeneous Agents: A Performance Analysis on Small and Imbalanced Datasets".
+<p align="center">
+  <a href="https://ieeexplore.ieee.org/abstract/document/10545544"><strong><code>Paper</code></strong></a>
+</p>
+
+<div align='center'>
+  <br><img src="docs/demo-small.gif" width=70%>
+  <br>Agent classes are powerful cues for trajectory prediction.
+</div>
+
 
 Project Organization
 ------------

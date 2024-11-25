@@ -1,4 +1,4 @@
-<h2 align="center">Trajectory Prediction for Heterogeneous Agents:&thinsp;A&thinsp;Performance&thinsp;Analysis&thinsp;and&thinsp;on&thinsp;Small&hairsp;&#x0335;&hairsp;and&thinsp;Imbalanced&thinsp;Datasets</h2>
+<h2 align="center">Trajectory Prediction for Heterogeneous Agents:&thinsp;A&thinsp;Performance&thinsp;Analysis&thinsp;and&thinsp;on&thinsp;Small&thinsp;and&thinsp;Imbalanced&thinsp;Datasets</h2>
 
 <p align="center">
   <a href="https://ieeexplore.ieee.org/abstract/document/10545544"><strong><code>Paper</code></strong></a>

@@ -1,3 +1,4 @@
 data/mod_based_predictors_data/ filter=lfs diff=lfs merge=lfs -text
 mod_based_predictors/cliff/role_condition_k_fold_magni filter=lfs diff=lfs merge=lfs -text
 mod_based_predictors/cliff/role_condition_k_fold_sdd filter=lfs diff=lfs merge=lfs -text
+*.ipynb linguist-vendored
